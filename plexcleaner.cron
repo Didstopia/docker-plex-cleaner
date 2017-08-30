@@ -1,0 +1,11 @@
+# Run Plex Cleaner daily (midnight)
+0 0 * * * /usr/bin/python3 /plexcleaner/PlexCleaner.py --config "/config/PlexCleaner.conf" --update_config 1>&2 && \
+           /usr/bin/python3 /plexcleaner/PlexCleaner.py --config "/config/PlexCleaner.conf" 1>&2
+
+# Run Plex Cleaner hourly
+#0 0 0 * * /usr/bin/python3 /plexcleaner/PlexCleaner.py --config "/config/PlexCleaner.conf" --update_config 1>&2 && \
+#           /usr/bin/python3 /plexcleaner/PlexCleaner.py --config "/config/PlexCleaner.conf" 1>&2
+
+# Run Plex Cleaner every minute (useful for debugging)
+#* * * * * /usr/bin/python3 /plexcleaner/PlexCleaner.py --config "/config/PlexCleaner.conf" --update_config 1>&2 && \
+#           /usr/bin/python3 /plexcleaner/PlexCleaner.py --config "/config/PlexCleaner.conf" 1>&2
