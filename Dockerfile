@@ -3,7 +3,7 @@ FROM didstopia/base:alpine-3.5
 MAINTAINER Didstopia <support@didstopia.com>
 
 # Plex Cleaner URL
-ENV PLEX_CLEANER_URL="https://github.com/ngovil21/Plex-Cleaner/archive/9797292b55ea1e0720d40d38cfb16818aed3d2f8.zip"
+ENV PLEX_CLEANER_URL="https://github.com/ngovil21/Plex-Cleaner/archive/f4c3fe2cc4352bb67fdab5c4f36357f2186abfca.zip"
 
 # Use root user by default
 USER root
