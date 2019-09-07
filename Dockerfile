@@ -22,24 +22,20 @@ RUN apk --no-cache add \
 # Ensure Python was correctly installed
 RUN python3 --version
 
-# Setup default user
-RUN addgroup -g 1000 plexcleaner && \
-    adduser -u 1000 -G plexcleaner -s /bin/sh -D plexcleaner
-
 # Install Plex Cleaner
 ADD ${PLEX_CLEANER_URL} /tmp/plexcleaner.zip
 RUN mkdir -p /plexcleaner && \
     unzip -j /tmp/plexcleaner.zip -d /plexcleaner && \
-    chown -R plexcleaner:plexcleaner /plexcleaner && \
+    chown -R docker:docker /plexcleaner && \
     rm -f /tmp/plexcleaner.zip
 
 # Setup scheduled running of Plex Cleaner
 COPY plexcleaner.cron /tmp/plexcleaner.cron
-RUN crontab -u plexcleaner /tmp/plexcleaner.cron
+RUN crontab -u docker /tmp/plexcleaner.cron
 
 # Setup volumes
 RUN mkdir -p /config && \
-    chown -R plexcleaner:plexcleaner /config
+    chown -R docker:docker /config
 VOLUME /config
 
 # Set the entry point
